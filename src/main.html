@@ -20,10 +20,8 @@
 
 	<div id="timeline">
 		<section class="intro">
-			<div class="introWrap">
-				<h1 class="introText1">Everything grows from a seed</h1>
-				<p class="introText2">Even plants!</p>
-			</div>
+			<h1 class="introText1">Everything grows from a seed</h1>
+			<p class="introText2">Even plants!</p>
 		</section>
 
 		<div class="firstMove transition"></div>
@@ -59,109 +57,62 @@
 	</div>
 
 	<div class="wrapper">
-		<div class="cart">
-			<div class="base">
-				<div class="nav-cart">
-					<div class="information">
-						<div class="quantity">
-							<p>QUANTITY</p>
-							<p>0</p>
-						</div>
-						<div class="total">
-							<p>TOTAL</p>
-							<p>Rp 0</p>
-						</div>
-					</div>
-					<button class="paybutton">
-						<span class="button-span">P</span>
-						<span class="button-span">A</span>
-						<span class="button-span">Y</span>
-					</button>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-				<div>
-					<img src="../resources/res/textures/asparagus.JPG" width="220" height="220">
-					<p>test</p>
-					<h3>test</h3>
-				</div>
-			</div>
-		</div>
-
 		<header class="nav">
-			<img src="../resources/res/textures/logo.PNG" width="200px" height="200px">
-		</header>
-
-		<div class="blur"></div>
-
-		<div class="payment">
-			<div class="banner"></div>
-			<div class="flex">
-			<div class="section1">
-				<h2 class="details">Details</h2>
-				<div class="information-wrapper">
-
-					<input type="text" placeholder="Full Name" id="fullname">
-
-					<div class="contacts AD">
-						<input type="text" placeholder="Email Address" id="email">
-						<input type="text" placeholder="Phone Number" id="phone">
+			<div id="base">
+				<div class="information">
+					<div class="quantity">
+						<p>QUANTITY</p>
+						<p class="qtt">0</p>
 					</div>
-
-					<div class="Address AD">
-						<input type="text" placeholder="Address" id="address2">
-					</div>
-
-					<div class="Location AD">
-						<input type="text" placeholder="City" id="city">
-						<input type="text" placeholder="State" id="state">
-						<input type="text" placeholder="Zipcode" id="zipcode">
+					<div class="total">
+						<p>TOTAL</p>
+						<p class="ttl">Rp 0</p>
 					</div>
 				</div>
+				<button id="paybutton">
+					<span id="button-span">P</span>
+					<span id="button-span">A</span>
+					<span id="button-span">Y</span>
+				</button>
 			</div>
-			<div class="section2"></div>
+		</header>
+		<img src="../resources/res/textures/logo.PNG" width="200px" height="200px" class="logo">
+
+		<div id="blur"></div>
+
+		<div id="payment">
+			<div class="banner">
+				<p id="banner-content">PAYMENT</p>
 			</div>
-			<div class="options">
-				<button class="cancel"><span class="cancel-span">Cancel</span></button>
-				<button class="pay"><span class="pay-span">Pay</span></button>
+			<div class="flex">
+				<div class="section1">
+					<h2 class="details">Details</h2>
+					<div class="information-wrapper">
+
+						<input type="text" placeholder="Full Name" id="fullname">
+
+						<div class="contacts AD">
+							<input type="text" placeholder="Email Address" id="email">
+							<input type="text" placeholder="Phone Number" id="phone">
+						</div>
+
+						<div class="Address AD">
+							<input type="text" placeholder="Address" id="address2">
+						</div>
+
+						<div class="Location AD">
+							<input type="text" placeholder="City" id="city cd">
+							<input type="text" placeholder="State" id="state cd">
+							<input type="text" placeholder="Zipcode" id="zipcode cd">
+						</div>
+
+						<input type="text" placeholder="Payment Method" id="method" class="AD">
+					</div>
+				</div>
+				<div class="options">
+					<button id="cancel">Cancel</button>
+					<button id="pay">Pay</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -193,20 +144,21 @@
 			<h1 class="recommended-text">Recommended</h1>
 			<div class="liner"></div>
 			<div class="recommended-content">
-				<img src="../resources/res/textures/asparagus.JPG" width="300" height="300">
-				<img src="../resources/res/textures/bayamhijau.JPG" width="300" height="300">
-				<img src="../resources/res/textures/bayammerah.JPG" width="300" height="300">
-				<img src="../resources/res/textures/broccoli.JPG" width="300" height="300">
-				<img src="../resources/res/textures/buncis.JPG" width="300" height="300">
-				<img src="../resources/res/textures/carrot.JPG" width="300" height="300">
-				<img src="../resources/res/textures/cucumber.JPG" width="300" height="300">
-				<img src="../resources/res/textures/asparagus.JPG" width="300" height="300">
-				<img src="../resources/res/textures/bayamhijau.JPG" width="300" height="300">
-				<img src="../resources/res/textures/bayammerah.JPG" width="300" height="300">
-				<img src="../resources/res/textures/broccoli.JPG" width="300" height="300">
-				<img src="../resources/res/textures/buncis.JPG" width="300" height="300">
-				<img src="../resources/res/textures/carrot.JPG" width="300" height="300">
-				<img src="../resources/res/textures/cucumber.JPG" width="300" height="300">
+				<div class="bottom-wrapper"></div>	
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
+				<div class="bottom-wrapper"></div>
 			</div>
 		</div>
 		<div class="endCredit1-wrap">

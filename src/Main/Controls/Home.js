@@ -20,174 +20,280 @@ import seledri from "../../../resources/res/textures/seledri.jpg"
 import tauge from "../../../resources/res/textures/tauge.jpg"
 import terong from "../../../resources/res/textures/terong.jpg"
 import ubiungu from "../../../resources/res/textures/ubiungu.jpg"
-import zucchini from "../../../resources/res/textures/zucchini.jpg"
+
+let active = false;
+let total = 0;
+let images = [];
+let cart = [];
 
 export default class Home {
 	constructor() {
-		this.container = document.querySelectorAll(".item-wrapper")
-		this.images = [];
+		this.container = document.querySelectorAll(".item-wrapper");
+		this.container2 = document.querySelectorAll(".bottom-wrapper");
 		this.initArray();
 		this.randomizeImg();
+		
+		document.addEventListener('click', function (e) {
+			e = e || window.event;
+			var target = e.target || e.srcElement,
+				text = target.textContent || target.innerText
+
+			if ((target.id === "button-span" || target.id === "paybutton") && total > 0) {
+				var blur = document.getElementById("blur");
+				blur.classList.add("appear");
+
+				var payment = document.getElementById("payment");
+				payment.classList.add("appear");
+
+				var banner = document.getElementById("banner-content")
+				banner.innerHTML = "PAYMENT"
+			}
+
+			if (target.id === "blur" || target.id === "cancel") {
+				var blur = document.getElementById("blur");
+				blur.classList.remove("appear");
+
+				var payment = document.getElementById("payment");
+				payment.classList.remove("appear");
+
+				var banner = document.getElementById("banner-content")
+				banner.innerHTML = "PAYMENT"
+			}
+
+			if (target.id === "pay") {
+				var banner = document.getElementById("banner-content")
+				banner.innerHTML = "TERIMA KASIH"
+			}
+
+			if (target.id === "base") {
+				var base = document.getElementById("base")
+				active = !active;
+				if (active) {
+					base.classList.add("uncover")
+				} else {
+					base.classList.remove("uncover")
+				}
+			}
+		}, false)
 	}
 
 	randomizeImg() {
-		for (let i = 0; i < this.container.length; i++) {
-			const src = this.images[Math.floor(Math.random() * this.images.length)];
+		for (let i = 0; i < images.length; i++) {
+			var src = images[Math.floor(Math.random() * images.length)];
+
+			while (src.checked) {
+				src = images[Math.floor(Math.random() * images.length)];
+			}
 
 			const img = document.createElement('img');
 			img.src = src.source;
 			img.width = img.height = 220;
 
 			const name = document.createElement('p');
-			name.innerText = src.label;
+			name.innerHTML = src.label;
 			
 			const price = document.createElement('h3');
-			price.innerText = src.price;
+			price.innerHTML = "Rp " + src.price
 
-			this.container[i].appendChild(img)
-			this.container[i].appendChild(name)
-			this.container[i].appendChild(price)
+			const button = document.createElement('button');
+			button.innerHTML = "Add to Cart";
+			button.id = src.source;
+			button.onclick = function() {
+				const src = images.find(t => t.source === button.id)
+				const base = document.querySelector("#base");
+
+				const div = document.createElement('div');
+				div.id = "cart-wrap"
+
+				const name = document.createElement('p');
+				name.innerHTML = src.label;
+				
+				const price = document.createElement('h3');
+				price.innerHTML = "Rp " + src.price
+
+				cart.push(src)
+				base.appendChild(div)
+				div.appendChild(img.cloneNode(true))
+				div.appendChild(name)
+				div.appendChild(price)
+
+				console.log(cart)
+				total += src.price
+				document.querySelector(".qtt").innerHTML = cart.length
+				document.querySelector(".ttl").innerHTML = total
+			}
+
+			images.find(t => t === src).checked = true;
+
+			if (i < 7) {
+				this.container[i].appendChild(img)
+				this.container[i].appendChild(name)
+				this.container[i].appendChild(price)
+				this.container[i].appendChild(button)
+			} 
+			else {
+				this.container2[i - 7].appendChild(img)
+				this.container2[i - 7].appendChild(name)
+				this.container2[i - 7].appendChild(price)
+				this.container2[i - 7].appendChild(button)
+			}
 		}
 	}
 
 	initArray() {
-		this.images.push(
+		images.push(
 		{
 			source: asparagus,
-			price: "Rp 10.000",
+			checked: false,
+			price: 10000,
 			label: "Asparagus 250gr"
 		},
 		
 		{
 			source: bayamhijau,
-			price: "Rp 5.500",
+			checked: false,
+			price: 5500,
 			label: "Daun Bayam 1 ikat"
 		},
 
 		{
 			source: bayammerah,
-			price: "Rp 11.900",
+			checked: false,
+			price: 11900,
 			label: "Daun Bayam Merah 1 ikat"
 		},
 
 		{
 			source: broccoli,
-			price: "Rp 11.500",
+			checked: false,
+			price: 11500,
 			label: "Brokoli 250gr"
 		},
 
 		{
 			source: buncis,
-			price: "Rp 8.500",
+			checked: false,
+			price: 8500,
 			label: "Sayur Buncis 250gr"
 		},
 
 		{
 			source: carrot,
-			price: "Rp 6.500",
+			checked: false,
+			price: 6500,
 			label: "Wortel 250gr"
 		},
 
 		{
 			source: cucumber,
-			price: "Rp 6.000",
+			checked: false,
+			price: 6000,
 			label: "Timun Segar 500gr"
 		},
 
 		{
 			source: daunsingkong,
-			price: "Rp 4.500",
+			checked: false,
+			price: 4500,
 			label: "Daun Singkong per ikat Fresh"
 		},
 
 		{
 			source: kacangpanjang,
-			price: "Rp 8.500",
+			checked: false,
+			price: 8500,
 			label: "Kacang Panjang 500gr"
 		},
 
 		{
 			source: kangkung,
-			price: "Rp 4.700",
+			checked: false,
+			price: 4700,
 			label: "Kangkung 1 ikat"
 		},
 
 		{
 			source: kemangi,
-			price: "Rp 2.000",
+			checked: false,
+			price: 2000,
 			label: "DAUN KEMANGI / SEGAR"
 		},
 
 		{
 			source: kembangkol,
-			price: "Rp 18.000",
+			checked: false,
+			price: 18000,
 			label: "Kembang Kol 500gr"
 		},
 
 		{
 			source: labusiam,
-			price: "Rp 6.500",
+			checked: false,
+			price: 6500,
 			label: "Sayur Labu Siam 500gr"
 		},
 
 		{
 			source: leunca,
-			price: "Rp 5.000",
+			checked: false,
+			price: 5000,
 			label: "Leunca 250gr"
 		},
 
 		{
 			source: pakcoi,
-			price: "Rp 9.000",
+			checked: false,
+			price: 9000,
 			label: "Pak coi / pakcoy 500gr"
 		},
 
 		{
 			source: pare,
-			price: "Rp 9.000",
+			checked: false,
+			price: 9000,
 			label: "Pare 500gr"
 		},
 
 		{
 			source: sawi,
-			price: "Rp 4.500",
+			checked: false,
+			price: 4500,
 			label: "Sayur Sawi Hijau 250gr"
 		},
 
 		{
 			source: selada,
-			price: "Rp 10.000",
+			checked: false,
+			price: 10000,
 			label: "Selada FRESH 150gr"
 		},
 
 		{
 			source: seledri,
-			price: "Rp 3.000",
+			checked: false,
+			price: 3000,
 			label: "Daun Seledri"
 		},
 
 		{
 			source: tauge,
-			price: "Rp 7.500",
+			checked: false,
+			price: 7500,
 			label: "Toge / Tauge 500gr"
 		},
 
 		{
 			source: terong,
-			price: "Rp 6.500",
+			checked: false,
+			price: 6500,
 			label: "Terong Ungu 500gr"
 		},
 
 		{
 			source: ubiungu,
-			price: "Rp 8.200",
+			checked: false,
+			price: 8200,
 			label: "Ubi Ungu 1kg"
-		},
-
-		{
-			source: zucchini,
-			price: "Rp 10.000",
-			label: "Zucchini 500gr"
 		})
 	}
 }

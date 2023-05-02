@@ -28,7 +28,6 @@ html, body {
 }
 
 #canvas {
-	position: absolute;
 	width: 100%;
 	height: 100%;
 }
@@ -59,24 +58,16 @@ html, body {
 	height: 500px;
 }
 
-
 .intro {
 	position: relative;
 	width: 100%;
 	height: 100vh;
-}
-
-.introWrap {
-	position: absolute;
-	top: 45%;
-	left: 40%;
-}
-
-.introText2 {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 }
+
 
 /* Others */
 .navigation-bar {
@@ -106,6 +97,7 @@ div ul li:hover {
 	100% {opacity: 0;}
 }*/
 
+/* Navigation and Cart */
 .wrapper {
 	display: flex;
 	position: relative;
@@ -113,37 +105,54 @@ div ul li:hover {
 	height: 100%;
 }
 
-/* Navigation and Cart */
 .nav {
 	display: flex;
+	justify-content: flex-end;
 	position: fixed;
 	width: 100%;
 	height: 210px;
 	border-bottom: solid thin;
-	justify-content: center;
 	background-color: #ffffff;
 }
 
-.cart {
+.logo {
 	position: fixed;
-	width: 300px;
-	height: 100%;
-	background-color: #000000;
-	margin-left: 1665px;
+	left: 50%;
+	transform: translate(-50%, 0);
 }
 
-.base {
+#base {
+	position: fixed;
 	text-align: center;
+	margin-left: auto;
 	margin-top: 210px;
-	width: 100%;
-	height: 100%;
+	width: 300px;
+	height: 840px;
 	background-color: #ededed;
 	overflow-y: auto;
+	transform: translate(270px);
+	transition: all 0.5s ease;
 }
 
-.base img {
-	margin: 10px;
+#base:hover {
+	cursor: pointer;
+}
+
+#base.uncover {
+	transform: translate(0px);
+}
+
+#base img {
 	border-radius: 10px;
+}
+
+#cart-wrap {
+	margin: auto;
+	width: 80%;
+	margin-top: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #fffff0;
 }
 
 .information {
@@ -161,7 +170,7 @@ div ul li:hover {
 	text-align: left;
 }
 
-.paybutton {
+#paybutton {
 	margin-top: 10px;
 	background-color: #4caf50;
 	color: whitesmoke;
@@ -169,6 +178,9 @@ div ul li:hover {
 	border-radius: 5px;
 	padding: 10px 70px;
 	font-size: 40px;
+}
+
+#paybutton:hover {
 	cursor: pointer;
 }
 
@@ -176,15 +188,30 @@ div ul li:hover {
 	font-weight: 300;
 }
 
-.blur {
+#blur, #payment {
+	opacity: 0;
+	transition: all 1s;
+}
+
+#blur.appear {
+	display: block;
+	opacity: .7;
+}
+
+#payment.appear {
+	display: block;
+	opacity: 1;
+}
+
+#blur {
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	background-color: black;
-	opacity: .7;
+	display: none;
 }
-
-.payment {
+	
+#payment {
 	position: fixed;
 	width: 50%;
 	height: 70%;
@@ -192,6 +219,7 @@ div ul li:hover {
 	border-radius: 10px;
 	margin-top: 150px;
 	margin-left: 500px;
+	display: none;
 }
 
 .flex {
@@ -202,7 +230,16 @@ div ul li:hover {
 	width: 100%;
 	height: 150px;
 	margin-top: 50px;
-	background-color: #4caf50;
+	background-image: linear-gradient(to right, #4caf50 , #5ac45f);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#banner-content {
+	color: white;
+	font-size: 80px;
 }
 
 .details {
@@ -220,6 +257,10 @@ input[type="text"]#fullname {
 	height: 50px;
 }
 
+input[type="text"]#address2 {
+	width: 500px;
+}
+
 input[type="text"] {
 	width: 200px;
 	height: 50px;
@@ -229,14 +270,25 @@ input[type="text"] {
 	margin-top: 30px;
 }
 
-.contacts {
-}
-
 .options {
 	margin-top: 50px;
+	margin-right: 80px;
 	display: flex;
+	flex-direction: column;
 	justify-content: space-evenly;
+}
 
+#cancel, #pay {
+	border-radius: 5px;
+	background-color: #4caf50;
+	border: none;
+	padding: 30px 90px;
+	color: whitesmoke;
+	font-size: 40px;
+}
+
+#cancel:hover, #pay:hover {
+	cursor: pointer;
 }
 
 .discount {
@@ -288,6 +340,7 @@ img:hover {
 	margin-left: 115px;
 }
 
+/* Best Selling */
 .best {
 	background-color: #f7f4f0;
 	margin-top: 40px;
@@ -304,17 +357,30 @@ img:hover {
 }
 
 .best-content img {
-	margin: 10px;
 	border-radius: 10px;
 	display: inline-block;
+}
+
+.best-content button {
+	margin-top: 5px;
+	background-color: #4caf50;
+	border: none;
+	color: whitesmoke;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.best-content button:hover {
+	cursor: pointer;
+	background-color: #429646;
 }
 
 .item-wrapper {
 	margin: 20px;
 	background-color: #fffff0;
 	border-radius: 10px;
-	width: 245px;
 	display: inline-block;
+	padding: 10px;
 }
 
 /* Recommended Contents */
@@ -346,12 +412,32 @@ img:hover {
 	border-radius: 10px;
 }
 
+.bottom-wrapper {
+	margin: 20px;
+	background-color: #fffff0;
+	border-radius: 10px;
+	padding: 10px;	
+}
+
+.recommended-content button {
+	margin-top: 5px;
+	background-color: #4caf50;
+	border: none;
+	color: whitesmoke;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.recommended-content button:hover {
+	cursor: pointer;
+	background-color: #429646;
+}
 
 /* End Page */
 .endCredit1-wrap {
-	top: 50px;
-	margin-left: 50px;
-	margin-right: 50px;
+	border-top: solid medium #d4d4d4;
+	margin-top: 50px;
+	padding: 25px;
 }
 
 .endCredit1 {
